@@ -1,0 +1,131 @@
+<div class="container-fluid">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Employee Leave System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addLeave" type="submit">Add Leave</button>
+        </div>
+      </div>
+  </nav>
+
+
+  <div ng-app="myApp" ng-controller="customersCtrl">
+
+    </div>
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Leave Type</th>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">Leave Date</th>
+          <th scope="col">Return Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let leave of leaveList let i = index">
+          <td>{{leave.leaveType}}</td>
+          <td>{{leave.leaveName}}</td>
+          <td>{{leave.leaveSurname}}</td>
+          <td>{{leave.leaveDate}}</td>
+          <td>{{leave.returnDate}}</td>
+
+
+        </tr>
+
+      </tbody>
+    </table>
+
+
+<!-- Add employee modal -->
+<div class="modal fade" id="addLeave" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new Leave Request</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+          <form [formGroup]="leaveDetail">
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Type of leave </label>
+                  <input type="text" formControlName="leaveType" class="form-control" id="ltype" aria-describedby="emailHelp">
+                </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Name </label>
+                <input type="email" formControlName="leaveName" class="form-control" id="lname" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Surname </label>
+                  <input type="text" formControlName="leaveSurname" class="form-control" id="lsurname" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Leave Date </label>
+                  <input type="date" formControlName="leaveDate" class="form-control" id="lleavedate" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Return Date </label>
+                  <input type="date" formControlName="returnDate" class="form-control" id="lreturndate" aria-describedby="emailHelp">
+                </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addLeave()">Add Leave Request</button>
+                </div>
+            </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit employee modal -->
+<div class="modal fade" id="editEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Leave Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+          <form [formGroup]="leaveDetail">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Type of leave </label>
+              <input type="text" formControlName="LeaveType" class="form-control" id="ltype" aria-describedby="emailHelp">
+            </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name </label>
+            <input type="email" formControlName="LeaveName" class="form-control" id="lname" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Surname </label>
+              <input type="text" formControlName="LeaveSurname" class="form-control" id="lsurname" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Leave Date </label>
+              <input type="date" formControlName="LeaveDate" class="form-control" id="lleavedate" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Return Date </label>
+              <input type="date" formControlName="ReturnDate" class="form-control" id="lreturndate" aria-describedby="emailHelp">
+            </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-outline-success" (click)="updateLeave()" data-bs-dismiss="modal">Update </button>
+                </div>
+            </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
